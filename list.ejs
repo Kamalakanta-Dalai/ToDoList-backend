@@ -1,0 +1,50 @@
+<%- include("header") -%>
+<header class="header">
+  <!-- <a href="#" class="logo"> ToDoList </a> -->
+
+  <div class="logo">
+    <span><i class="bx bxs-notepad"></i></span>
+    <span>ToDoList</span>
+    <p>Plan Your Day As You Wish</p>
+  </div>
+
+  <div class="icons">
+    <div><i class='bx bxs-right-arrow-circle' ></i></i></div>
+    <div><i class="bx bxs-moon"></i></div>
+    
+  </div>
+</header>
+<h1>hey welcome...!!!!</h1>
+<div class="box" id="heading">
+  <h1><%= kindOfDay %></h1>
+</div>
+
+<div class="box">
+  <% newListItems.forEach(function(item){ %>
+  <form  action="/delete" method="post">
+    <div class="item">
+    <input type="checkbox" />
+    <p class="text"><%= item.name %></p>
+    <p class="time"><%= item.time %></p>
+    <button type="submit" class="btn"><i class="bx bxs-edit-alt"></i></button>
+    <button type="submit" class="btn" name="button" value="<%= item._id %>"><i class="bx bxs-trash-alt bx-tada"></i></button>
+    <!-- <span><i class="bx bxs-edit-alt"></i></span>
+    <span><i class="bx bxs-trash-alt bx-tada"></i></span> -->
+  </div>
+</form>
+  <% }) %>
+
+  <form class="item" action="/" method="post" >
+      <input
+      type="text"
+      name="newItem"
+      placeholder="New Item"
+      autocomplete="off"
+    />
+    <input type="<%= Type %>" class="<%= Type %>" name="newTime" autocomplete="off" />
+    <!-- <input type="date" name="newDate" id="date" autocomplete="off" /> -->
+
+    <button type="submit" name="list" value="<%= kindOfDay %>">+</button>
+  </form>
+</div>
+<%- include("footer") -%>
